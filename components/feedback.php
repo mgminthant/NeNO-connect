@@ -1,5 +1,5 @@
-<div class="feedback-parent my-4">
-    <div class="slide">
+<div class="feedback-parent my-5">
+    <div class="slide my-5">
         <div class="feedback">
             <div class="single-feedback">
                 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad doloremque

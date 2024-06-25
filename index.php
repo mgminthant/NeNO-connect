@@ -120,31 +120,6 @@
             animation: scroll 5s linear;
         }
 
-        @media (max-width: 900px) {
-            .slide {
-                margin: 0 15px;
-            }
-
-            .feedback-parent {
-                padding: 0 15px;
-            }
-
-            .feedback-parent svg {
-                font-size: 150px;
-            }
-
-            .feedback svg {
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width :600px) {
-            .single-feedback {
-                padding: 15px;
-                border-radius: 15px;
-            }
-        }
-
         h5 {
             font-size: 15px;
         }
@@ -170,6 +145,40 @@
         @keyframes scroll-watcher {
             to {
                 scale: 1 1;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .slide {
+                margin: 0 15px;
+            }
+
+            .feedback-parent {
+                padding: 0 15px;
+            }
+
+            .feedback-parent svg {
+                font-size: 150px;
+            }
+
+            .feedback svg {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width :600px) {
+            .single-feedback {
+                padding: 15px;
+                border-radius: 15px;
+            }
+
+            .up {
+                transform: translateY(0px);
+                margin: 20px 0;
+            }
+
+            .connect div{
+                border: 1px solid blue !important;
             }
         }
     </style>
