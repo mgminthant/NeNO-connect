@@ -1,3 +1,8 @@
+<?php include('./db/db.php'); ?>
+<?php
+session_start();
+// session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +19,12 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         .connect i {
             font-size: 70px;
             color: #0d6efd;
@@ -70,6 +81,7 @@
 
         .single-feedback {
             cursor: default;
+            position: relative;
             width: 400px;
             max-width: 70vw;
             overflow: scroll;
@@ -85,6 +97,9 @@
 
         .single-feedback p {
             font-size: 18px;
+            overflow: scroll;
+            max-height: 300px;
+            min-height: 250px;
         }
 
         .feedback div img {
@@ -101,32 +116,13 @@
             align-items: center;
         }
 
-        .rate svg {
-            fill: rgb(232, 232, 28);
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
         .slide-left {
             animation-play-state: paused;
             animation: scroll 5s linear;
         }
 
-        h5 {
+        .single-feedback h5 {
             font-size: 15px;
-        }
-
-        p {
-            font-size: 14px;
-            margin-bottom: 10px;
         }
 
         .scroll-watcher {
@@ -142,9 +138,26 @@
             scale: 0 1;
         }
 
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+
         @keyframes scroll-watcher {
             to {
                 scale: 1 1;
+            }
+        }
+
+        @keyframes top-bottom {
+            from {
+                transform: ;
             }
         }
 
@@ -176,18 +189,72 @@
                 transform: translateY(0px);
                 margin: 20px 0;
             }
+        }
 
-            .connect div{
+        @media (max-width:576px) {
+            .connect div div {
                 border: 1px solid blue !important;
             }
+
+            .connect div div.mid {
+                margin: 10px 0;
+            }
+        }
+
+
+        .pre-loader {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            background-color: white;
+        }
+
+        .main {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .fail_success {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
         }
     </style>
 </head>
 
 <body>
+    <div class="pre-loader fs-3 bg-black text-white">
+        <div class="text text-bold"></div>
+    </div>
     <div class="scroll-watcher"></div>
-    <?php include ('./components/animation.php') ?>
-    <?php include ('./pages/home.php') ?>
+    <?php include('./components/animation.php') ?>
+    <div class="under">
+        <?php include('./components/wedo.php') ?>
+        <?php include('./components/offer.php') ?>
+        <?php include('./components/feedback.php') ?>
+        <?php include('./components/footer.php') ?>
+    </div>
 </body>
+<script>
+    const second = document.getElementsByClassName('feedback')[1];
+    const first = document.getElementsByClassName('feedback')[0];
+    if (document.querySelectorAll('.single-feedback').length <= 4) {
+        second.style.display = "none";
+        first.style.animationPlayState = "paused";
+        document.getElementsByClassName("slide")[0].style.overflow = "scroll";
+    }
+</script>
+<!-- text type effect  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"
+    integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg=="
+    crossorigin="anonymous"></script>
+<script src="./Js/index.js"></script>
+<script src="./Js/poper.js"></script>
 
 </html>
